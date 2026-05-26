@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Recipe Website</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="css/header.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="mainpage.php">
+                <img src="images/LittleLoveRecipe_Logo.png" alt="Little Love Recipe Logo" class="logo-img">
+            </a>
+        </div>
+    
+        <!-- Responsive Navigation Menu -->
+        <nav>
+            <button class="menu-toggle" aria-label="Toggle Navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="mainpage.php">Home</a></li>
+                <li><a href="php/categories.php">Categories</a></li>
+                <li><a href="php/profilepage2.php">Profile</a></li>
+            </ul>
+        </nav>
+    
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search recipes..." aria-label="Search" />
+            <button type="button">🔍</button>
+        </div>
+    
+        <!-- Notifications and Profile Menu -->
+        <div class="user-controls">
+            <div class="profile-menu">
+                <img src="images/profile.png" alt="Profile" class="profile-pic" />
+                <div class="dropdown">
+                    <ul>
+                        <li><a href="php/profilepage2.php">View Profile</a></li>
+                        <li><a href="logout.php">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <h2 class="contact-title">CONTACT US</h2>
+
+    <main>
+        <section class="contact-section">
+            <h3>We'd love to hear from you!</h3>
+            <form action="submit_contact_form.php" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required />
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" placeholder="Write your message here" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    
+    <footer>
+        <p>
+            © 2025 <strong>LittleLoveRecipe</strong>. All Rights Reserved.
+        </p>
+        <nav>
+            <a href="about.html">About Us</a>
+            <a href="contactus.html">Contact Us</a>
+        </nav>
+        <p>
+            Contact us:
+            <a href="https://facebook.com/pencinta.zikir" target="_blank" aria-label="Facebook">
+                <img src="images/facebook.png" alt="Facebook" width="20">
+            </a>
+            
+            <a href="https://www.instagram.com/sabreenahany/profilecard/?igsh=cHE2M2JwNWZ0czdp" target="_blank" aria-label="Instagram">
+                <img src="images/instagram.png" alt="Instagram" width="20">
+            </a>
+        </p>
+    </footer>
+    <script src="js/header.js"></script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Recipe</title>
+  
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8dada;
+    border-bottom: 2px solid #ccc;
+    position: fixed;
+    top: 0;
+    left: 0; /* Ensures header starts at the left edge */
+    right: 0; /* Ensures header ends at the right edge */
+    z-index: 1000;
+}
+
+/* Logo */
+.logo img {
+    height: 50px;
+}
+
+/* Navigation Menu */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.nav-links li a:hover {
+    color: #ff6464;
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-bar input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #ff6464;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #e05555;
+}
+
+/* Notifications */
+.notifications {
+    position: relative;
+}
+
+.notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff6464;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+/* Profile Menu */
+.profile-menu {
+    position: relative;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.profile-pic {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+
+.dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.dropdown ul {
+    list-style: none;
+    padding: 10px;
+}
+
+.dropdown ul li {
+    margin: 10px 0;
+}
+
+.dropdown ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+/* Responsive Navigation */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger {
+    width: 25px;
+    height: 3px;
+    background-color: #000;
+    margin: 5px 0;
+    transition: all 0.3s;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #f8dada;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+   
+
+    .recipe-form-container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .form-header{
+        position:static;
+    }
+
+    .form-header h1 {
+      text-align: center;
+      color: #333;
+      font-size: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    .submit-button {
+      display: block;
+      width: 100%;
+      background-color:#ff6464;
+      color: #fff;
+      font-size: 18px;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+      background-color: #f8dada;
+    }
+
+    .tooltip {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .herb-decor {
+      position: absolute;
+      width: 60px;
+      opacity: 0.5;
+    }
+
+    .top-left {
+      top: 10px;
+      left: 10px;
+    }
+
+    .bottom-right {
+      bottom: 10px;
+      right: 10px;
+    }
+
+    .recipe-photo-preview {
+      display: none;
+      width: 100px;
+      margin-top: 10px;
+    }
+    footer {
+    background-color: #f8dada;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    color: #555;
+    border-top: 2px solid #ccc;
+}
+
+footer a {
+    color: #ff6464;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #e05555;
+}
+  </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="mainpage.php">
+                <img src="images/LittleLoveRecipe_Logo.png" alt="Little Love Recipe Logo" class="logo-img">
+            </a>
+        </div>
+    
+        <!-- Responsive Navigation Menu -->
+        <nav>
+            <button class="menu-toggle" aria-label="Toggle Navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="mainpage.php">Home</a></li>
+                <li><a href="php/categories.php">Categories</a></li>
+                <li><a href="php/profilepage2.php">Profile</a></li>
+            </ul>
+        </nav>
+    
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search recipes..." aria-label="Search" />
+            <button type="button">🔍</button>
+        </div>
+    
+        <!-- Notifications and Profile Menu -->
+        <div class="user-controls">
+            <div class="profile-menu">
+                <img src="images/profile.png" alt="Profile" class="profile-pic" />
+                <div class="dropdown">
+                    <ul>
+                        <li><a href="php/profilepage2.php">View Profile</a></li>
+                        <li><a href="logout.php">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+  <main>
+    <section class="recipe-form-container">
+      <header class="form-header">
+        <h1>Create Your Recipe</h1>
+        <p>Share your culinary magic by filling in the details below!</p>
+      </header>
+
+      <form action="php/createrecipe.php" method="POST" enctype="multipart/form-data">
+        <!-- Recipe Name -->
+        <div class="form-group">
+          <label for="title">Recipe Name:</label>
+          <input type="text" id="title" name="title" placeholder="What do you call your recipe?" required>
+        </div>
+         <!-- Serving Size -->
+         <div class="form-group">
+            <label for="serving">Serving Size:</label>
+            <input type="number" id="serving" name="serving" placeholder="Number of servings" min="1" required>
+            <span class="tooltip">How many people does this recipe serve?</span>
+          </div>
+    
+          <!-- Cook Time -->
+          <div class="form-group">
+            <label for="cook_time">Cook Time (in minutes):</label>
+            <input type="number" id="cook_time" name="cook_time" placeholder="e.g., 30" min="1" required>
+            <span class="tooltip">Time required to cook this recipe.</span>
+          </div>
+
+        <!-- Ingredients -->
+        <div class="form-group">
+          <label for="ingredients">Ingredients:</label>
+          <textarea id="ingredients" name="ingredients" placeholder="List your ingredients." rows="5" required></textarea>
+        </div>
+
+        <!-- Procedure -->
+        <div class="form-group">
+          <label for="prosedur">Procedure:</label>
+          <textarea id="prosedur" name="prosedur" placeholder="How do you cook your recipe?" rows="7" required></textarea>
+        </div>
+
+        <!-- Category -->
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+              <option value="" disabled selected>Select a category</option>
+              <option value="Breakfast">🍳 Breakfast</option>
+              <option value="Lunch">🥪 Lunch</option>
+              <option value="Dinner">🍝 Dinner</option>
+            </select>
+          </div>
+
+        <!-- Recipe Photo -->
+        <div class="form-group">
+          <label for="recipe_photo">Upload a photo:</label>
+          <input type="file" id="recipe_photo" name="recipe_photo" accept="image/*" required>
+          <img id="photo-preview" class="recipe-photo-preview" alt="Recipe Preview">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-button">Save Recipe</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>
+        © 2025 <strong>LittleLoveRecipe</strong>. All Rights Reserved.
+    </p>
+    <nav>
+      <a href="about.html">About Us</a>
+      <a href="contactus.html">Contact Us</a>
+    </nav>
+    <p>
+      Contact us:
+      <a href="https://facebook.com/pencinta.zikir" target="_blank" aria-label="Facebook">
+          <img src="images/facebook.png" alt="Facebook" width="20">
+      </a>
+      
+      <a href="https://www.instagram.com/sabreenahany/profilecard/?igsh=cHE2M2JwNWZ0czdp" target="_blank" aria-label="Instagram">
+          <img src="images/instagram.png" alt="Instagram" width="20">
+      </a>
+  </p>
+</footer>
+  <script>
+    // Preview uploaded photo
+    const recipePhotoInput = document.getElementById('recipe_photo');
+    const photoPreview = document.getElementById('photo-preview');
+
+    recipePhotoInput.addEventListener('change', () => {
+      const file = recipePhotoInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          photoPreview.src = e.target.result;
+          photoPreview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
+
+   
+   <script src="js/header.js"></script>
+</body>
+</html>

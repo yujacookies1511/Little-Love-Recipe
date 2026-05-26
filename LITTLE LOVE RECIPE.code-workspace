@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "LITTLE LOVE RECIPE",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501
+	}
+}

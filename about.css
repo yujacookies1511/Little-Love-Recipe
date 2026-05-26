@@ -1,0 +1,128 @@
+/* Main Body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffecec; /* Subtle background color */
+    flex:1;
+}
+
+/* Main Container */
+main {
+    
+    height: calc(100vh - 100px); /* Full height minus the header */
+}
+/* About Section */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    height: calc(100vh - 100px);
+}
+
+.about-title {
+    text-align: center;
+    color: #F6AAB2;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.about-section {
+    text-align: center;
+    background: #c2e1a2;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h2 {
+    color: #f32f60;
+    margin-bottom: 1rem;
+}
+
+.about-section p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+/* Team Section */
+.team {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 1.5rem; /* Spacing between cards */
+    max-width: 900px; /* Restrict the width of the entire section */
+    margin: 0 auto; /* Center align */
+}
+
+.team-member {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem; /* Reduced padding */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 250px; /* Restrict card size */
+    margin: 0 auto; /* Center individual cards */
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.team-member img {
+    width: 80px; /* Smaller image size */
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+    border: 3px solid #FF5733;
+}
+
+.team-member h3 {
+    color: #FF5733;
+    font-size: 1rem; /* Reduced text size */
+    margin-bottom: 0.5rem;
+}
+
+.team-member p {
+    font-size: 0.9rem; /* Reduced text size */
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .team {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+
+    .team-member {
+        max-width: 200px; /* Smaller cards on mobile */
+    }
+}
+    .search-bar input {
+        width: 100%;
+    }
+
+/* Footer */
+footer {
+    background-color: #f8dada;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    color: #555;
+    border-top: 2px solid #ccc;
+    width: 100%; /* Ensure footer spans the entire width */
+    margin-bottom: auto; /* Push footer to the bottom */
+}
+
+footer a {
+    color: #ff6464;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #e05555;
+}
